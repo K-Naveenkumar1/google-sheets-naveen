@@ -26,9 +26,9 @@ DEPARTMENT_TYPES={
 with st.form(key="webdevolopment_form"):
     Studentname=st.text_input(label="Student Name*",)
     Rollno=st.text_input(label="rollno*")
-    Gender=st.selectbox("Gender Type",options=GENDER_TYPES,index=None)
+    Gender=st.selectbox("Gender",options=GENDER_TYPES,index=None)
     Dept=st.selectbox("Department",options=DEPARTMENT_TYPES)
-    Dob=st.date_input(label="DOB")
+    Dob=st.text_input(label="DOB")
     description=st.text_area(label="Description")
 
     st.markdown("**required*")
