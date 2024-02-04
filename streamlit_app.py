@@ -3,7 +3,7 @@ import streamlit as st
 from streamlit_gsheets import GSheetsConnection
 import pandas as pd 
 
-st.title("Naveen Form")
+st.title("Registration Form")
 st.markdown("enter the details of new student below")
 
 conn = st.connection("gsheets",type=GSheetsConnection)
@@ -35,14 +35,14 @@ with st.form(key="webdevolopment_form"):
     cgpa=st.slider("CGPA Obtained",0.0,5.0,10.0)
     phno=st.textinput(label="Ph No")
 
-    st.markdown("**required*")
+    st.markdown("**Required*")
 
     submit_button=st.form_submit_button(label="submit")
 
 
     if submit_button:
         if not Studentname or not Rollno:
-            st.warning("ensure all mandetory field are filled")
+            st.warning("Ensure all mandetory field are filled")
             st.stop()
         elif existing_data["Name"].str.contains(Studentname).any():
             st.warning("A student with this name already exist")
@@ -69,6 +69,6 @@ with st.form(key="webdevolopment_form"):
 
             conn.update(worksheet="Form",data=updated_df)
 
-            st.success("student details successfully submitted")
+            st.success("Your Details Have Been Successfully Registered")
 
             
