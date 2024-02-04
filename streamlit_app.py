@@ -8,7 +8,7 @@ st.markdown("enter the details of new student below")
 
 conn = st.connection("gsheets",type=GSheetsConnection)
 
-existing_data=conn.read(worksheet="Form",usecols=list(range(6)),ttl=5)
+existing_data=conn.read(worksheet="Form",usecols=list(range(10)),ttl=5)
 existing_data=existing_data.dropna(how="all")
 
 
@@ -28,8 +28,12 @@ with st.form(key="webdevolopment_form"):
     Rollno=st.text_input(label="rollno*")
     Gender=st.selectbox("Gender",options=GENDER_TYPES,index=None)
     Dept=st.selectbox("Department",options=DEPARTMENT_TYPES)
-    Dob=st.text_input(label="DOB")
-    description=st.text_area(label="Description")
+    Dob=st.date_input(label="DOB")
+    Rollno1=st.text_input(label="10th Rollno*")
+    Rollno2=st.text_input(label="Inter Rollno*")
+    abcid=st.text_input(label="ABC Id")
+    cgpa=st.slider("CGPA Obtained",0.0,5.0,10.0)
+    phno=st.textinput(label="Ph No")
 
     st.markdown("**required*")
 
@@ -52,7 +56,11 @@ with st.form(key="webdevolopment_form"):
                         "Gender":Gender,
                         "Dept":Dept,
                         "DOB":Dob,
-                        "Description":description,
+                        "ABC Id":abcid,
+                        "Ph No":phno,
+                        "CGPA":cgpa,
+                        "10th Rollno":Rollno1,
+                        "Inter Rollno":Rollno2,
                     }
                 ]
             )
